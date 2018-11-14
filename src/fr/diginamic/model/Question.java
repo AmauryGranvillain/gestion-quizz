@@ -1,23 +1,23 @@
 package fr.diginamic.model;
 
+import java.util.ArrayList;
+
 public class Question {
 	int id;
 	String intitule;
-	String[] propositions;
+	ArrayList<String> propositions;
 	String bonneReponse;
 	
 	public Question (String intitule, int nbreponse) {
 		this.intitule = intitule;
-		this.propositions = new String[nbreponse];
+		propositions = new ArrayList<> ();
 	}
 	public boolean verifierReponse(String verifReponse) {
 		return verifReponse.equals(bonneReponse);
 	}
 	public void addProposition(String nouvelleproposition) {
-		for (int i = 0; i < propositions.length; i++) {
-			if(propositions[i] == null) {
-				propositions[i] = nouvelleproposition;
-			}
+		for ( int i=0; i < propositions.size(); i++) {
+			propositions.add(nouvelleproposition);
 		}
 	}
 }
