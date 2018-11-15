@@ -3,6 +3,7 @@ package fr.diginamic.console;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import fr.diginamic.exceptions.StockageException;
 import fr.diginamic.model.AjouterQuestionService;
 import fr.diginamic.model.ExecuterQuizzService;
 import fr.diginamic.model.ListerQuestionsService;
@@ -33,13 +34,21 @@ public class QuizzAdminConsoleApp {
 			case 2:
 				System.out.println("Ajout d'une nouvelle question");
 				AjouterQuestionService ajoutQuestion = new AjouterQuestionService();
-				ajoutQuestion.executeUC(questionUser, questions);
+				try {
+					ajoutQuestion.executeUC(questionUser, questions);
+				} catch (StockageException e){
+					System.out.println(e.getMessage());
+				}
 				menuPrincipal();
 				break;
 			case 3:
 				System.out.println("Suppression d'une question");
 				SupprimerQuestionService supprQuestion = new SupprimerQuestionService();
-				supprQuestion.executeUC(questionUser, questions);
+				try {
+					supprQuestion.executeUC(questionUser, questions);
+				} catch (StockageException e){
+					System.out.println(e.getMessage());
+				}
 				menuPrincipal();
 				break;
 			case 4:
