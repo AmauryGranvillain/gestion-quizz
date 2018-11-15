@@ -10,6 +10,7 @@ import fr.diginamic.model.ListerQuestionsService;
 import fr.diginamic.model.Question;
 import fr.diginamic.model.QuestionMemDao;
 import fr.diginamic.model.SupprimerQuestionService;
+import fr.diginamic.model.TypeQuestion;
 
 public class QuizzAdminConsoleApp {
 	static Scanner questionUser = new Scanner(System.in);	
@@ -71,6 +72,7 @@ public class QuizzAdminConsoleApp {
 		question1.addProposition("Rome");
 		question1.addProposition("Madrid");
 		question1.setBonneReponse("Paris");
+		question1.setType(TypeQuestion.BONUS);
 		questions.save(question1);
 		Question question2 = new Question("Quelle est la capitale de l'Espagne", 4);
 		question2.addProposition("Barcelone");
@@ -78,6 +80,7 @@ public class QuizzAdminConsoleApp {
 		question2.addProposition("Valence");
 		question2.addProposition("Madrid");
 		question2.setBonneReponse("Madrid");
+		question2.setType(TypeQuestion.SIMPLE);
 		questions.save(question2);
 		
 	}

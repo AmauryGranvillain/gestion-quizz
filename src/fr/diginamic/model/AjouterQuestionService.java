@@ -25,6 +25,10 @@ public class AjouterQuestionService extends MenuService {
 		System.out.println("Veuillez entrer la bonne réponse (entre 1 et " + nb + ")");
 		String br = questionUser.nextLine();
 		question.setBonneReponse(br);
+		System.out.println("Est-ce une question bonus ? (simple ou bonus)");
+		String rep = questionUser.nextLine();
+		TypeQuestion type = TypeQuestion.valueOf(rep.toUpperCase());
+		question.setType(type);
 		questions.save(question);
 	}
 

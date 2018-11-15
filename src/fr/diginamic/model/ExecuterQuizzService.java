@@ -10,27 +10,31 @@ public class ExecuterQuizzService extends MenuService {
 		int score = 0;
 		for (int i = 0; i < questions.findAll().size(); i++) {
 			
+			Question question = questions.findAll().get(i);
 			
+			System.out.println(question.getIntitule());
 			
-			System.out.println(questions.findAll().get(i).getIntitule());
-			
-			for (int j = 0; j < questions.findAll().get(i).getPropositions().size(); j++) {
+			for (int j = 0; j < question.getPropositions().size(); j++) {
 				
-				System.out.println(questions.findAll().get(i).getPropositions().get(j));
+				System.out.println(question.getPropositions().get(j));
 				
 			}
 			
 			System.out.println("Veuillez entrer votre réponse :");
 			String choixUtilisateur = questionUser.nextLine();
 			
-			if (questions.findAll().get(i).verifierReponse(choixUtilisateur) == true) {
+			if (question.verifierReponse(choixUtilisateur) == true) {
 				System.out.println("Bonne réponse !");
-				score = score + 1;
+				if( question.getType().equals(TypeQuestion.BONUS)) {
+					score = score + 2;
+				} else {
+					score = score + 1;
+				}
 			} else {
 				System.out.println("Mauvaise réponse...");
 			}
 		}
-		System.out.println("Votre score est de " + score + "/" + questions.findAll().size());
+		System.out.println("Votre score est de " + score);
 	}
 
 }
